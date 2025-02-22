@@ -15,6 +15,19 @@ navLinks.forEach(link => {
         }
     });
 });
+const firebaseConfig = {
+  apiKey: "TU_API_KEY",
+  authDomain: "TU_PROYECTO.firebaseapp.com",
+  databaseURL: "https://contadordeusuarios-69c74-default-rtdb.firebaseio.com/",
+  projectId: "TU_PROYECTO",
+  storageBucket: "TU_PROYECTO.appspot.com",
+  messagingSenderId: "TU_SENDER_ID",
+  appId: "TU_APP_ID"
+};
+
+// Inicializa Firebase
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
 
 // Live button animation
 const liveButton = document.querySelector('.live-button');
