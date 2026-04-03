@@ -1,43 +1,83 @@
-// Smooth Scroll for navigation links
-const navLinks = document.querySelectorAll('nav a');
+// ===============================
+// ESPERAR A QUE CARGUE EL DOM
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
 
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
+    // ===============================
+    // SCROLL SUAVE PARA MENÚ
+    // ===============================
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
 
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 50,
-                behavior: 'smooth'
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const targetId = link.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                const headerHeight = document.querySelector("header").offsetHeight;
+
+                window.scrollTo({
+                    top: targetElement.offsetTop - headerHeight,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // ===============================
+    // BOTÓN TRANSMISIÓN EN VIVO
+    // ===============================
+    const liveButton = document.querySelector('.live-button');
+    const liveSection = document.querySelector('.live-section');
+
+    if (liveButton && liveSection) {
+        liveButton.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            liveSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
+
+            liveButton.textContent = "Estás viendo la transmisión 🔴";
+        });
+    }
+
+    // ===============================
+    // BOTÓN PAYPAL
+    // ===============================
+    const paypalButton = document.querySelector('.paypal-button');
+
+    if (paypalButton) {
+        paypalButton.addEventListener('click', () => {
+            console.log("Redirigiendo a PayPal...");
+        });
+    }
+
+    // ===============================
+    // BOTÓN WHATSAPP
+    // ===============================
+    const whatsappButton = document.querySelector('.whatsapp-button');
+
+    if (whatsappButton) {
+        whatsappButton.addEventListener('click', () => {
+            console.log("Abriendo WhatsApp...");
+        });
+    }
+
+    // ===============================
+    // EFECTO HEADER AL HACER SCROLL
+    // ===============================
+    const header = document.querySelector("header");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+            header.style.background = "rgba(0, 0, 0, 0.85)";
+        } else {
+            header.style.background = "rgba(255, 255, 255, 0.08)";
         }
     });
+
 });
-
-// Handle live section toggle
-const liveSection = document.querySelector('.live-section');
-liveButton.addEventListener('click', () => {
-    liveSection.classList.toggle('visible');
-    liveButton.textContent = liveSection.classList.contains('visible')
-        ? 'Cerrar Transmisión'
-        : 'Ver Transmisión en Vivo';
-});
-
-// Contact buttons functionality
-const contactButtons = document.querySelectorAll('.contact-buttons a');
-
-contactButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        alert(`Redirigiendo a ${button.textContent}`);
-    });
-});
-
-// Handle PayPal donation button functionality
-const paypalButton = document.querySelector('.donate-button');
-if (paypalButton) {
-    paypalButton.addEventListener('click', () => {
-        window.location.href = 'https://paypal.me/JonhSuazaramirez';
-    });
-} 
