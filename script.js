@@ -1,37 +1,77 @@
 /* =============================================
-   RETROFUTURO DIGITAL — script.js v4
+   RETROFUTURO DIGITAL — script.js v5
+   Jonh Jota Soluciones
    ============================================= */
  
 // ╔══════════════════════════════════════════════════════╗
 // ║  CONFIGURACIÓN — edita estos valores                 ║
 // ╚══════════════════════════════════════════════════════╝
- 
 const CONFIG = {
     // WebSocket del servidor Python
     wsUrl: "ws://localhost:8765/ws",
-    // Con ngrok:      "wss://tu-id.ngrok-free.app/ws"
+    // Con ngrok:       "wss://tu-id.ngrok-free.app/ws"
+    // Con IP pública:  "ws://123.456.789.0:8765/ws"
  
-    // ── YouTube ──
     youtube: {
-        // El ID del video/stream de YouTube (lo que va después de ?v= o /embed/)
-        videoId: "0FBiyFpV__g?",
+        // ► CAMBIA ESTE ID para apuntar a otro video/stream de YouTube
+        // Es la parte después de ?v= o /embed/ en la URL
+        // Ej: youtube.com/watch?v=  ABC123   ← ese es el ID
+        videoId: "SynewvEcpf8",
         label:   "▶ YouTube",
     },
  
-    // ── Twitch ──
     twitch: {
-        // Tu nombre de canal en Twitch (lo que aparece en twitch.tv/TU_CANAL)
+        // Tu nombre de canal en twitch.tv/TU_CANAL
         channel: "TU_CANAL_TWITCH",
         label:   "◈ Twitch",
-        // Dominio donde está alojada tu página (GitHub Pages)
-        // Cámbialo por tu usuario real: "miusuario.github.io"
+        // Tu dominio de GitHub Pages — cámbialo por tu usuario real
         parent:  "tu-usuario.github.io",
     },
 };
  
-// ══════════════════════════════════════════════════════
-//  PLATAFORMA ACTIVA
-// ══════════════════════════════════════════════════════
+ 
+// ═══════════════════════════════════════════
+//  COPIAR NÚMERO — Nequi / Daviplata
+// ═══════════════════════════════════════════
+function copyNumber(number, msgId) {
+    const msgEl = document.getElementById(msgId);
+ 
+    navigator.clipboard.writeText(number)
+        .then(() => {
+            if (msgEl) {
+                msgEl.textContent = "¡Copiado!";
+                msgEl.classList.add("copied");
+                setTimeout(() => {
+                    msgEl.textContent = "Copiar";
+                    msgEl.classList.remove("copied");
+                }, 2200);
+            }
+        })
+        .catch(() => {
+            // Fallback para navegadores sin clipboard API
+            const el = document.createElement("textarea");
+            el.value = number;
+            el.style.position = "fixed";
+            el.style.opacity  = "0";
+            document.body.appendChild(el);
+            el.select();
+            document.execCommand("copy");
+            document.body.removeChild(el);
+            if (msgEl) {
+                msgEl.textContent = "¡Copiado!";
+                msgEl.classList.add("copied");
+                setTimeout(() => {
+                    msgEl.textContent = "Copiar";
+                    msgEl.classList.remove("copied");
+                }, 2200);
+            }
+        });
+}
+ 
+ 
+// ═══════════════════════════════════════════
+//  SELECTOR DE PLATAFORMA
+// ═══════════════════════════════════════════
 let currentPlatform = localStorage.getItem("rd_platform") || "youtube";
  
 const videoShell    = document.querySelector(".video-shell");
@@ -40,43 +80,32 @@ const watermarkText = document.getElementById("watermark-text");
 const switchOverlay = document.getElementById("switching-overlay");
  
 function buildYouTubeUrl() {
-    return `https://www.youtube.com/embed/${CONFIG.youtube.videoId}` +
-           `?autoplay=1&rel=0&modestbranding=1`;
+    return `https://www.youtube.com/embed/${CONFIG.youtube.videoId}?autoplay=1&rel=0&modestbranding=1`;
 }
  
 function buildTwitchUrl() {
-    return `https://player.twitch.tv/?channel=${CONFIG.twitch.channel}` +
-           `&parent=${CONFIG.twitch.parent}&autoplay=true&muted=false`;
+    return `https://player.twitch.tv/?channel=${CONFIG.twitch.channel}&parent=${CONFIG.twitch.parent}&autoplay=true`;
 }
  
 function loadPlatform(platform, animate = false) {
     currentPlatform = platform;
     localStorage.setItem("rd_platform", platform);
  
-    // Mostrar overlay de "Cambiando señal..."
-    if (animate) {
-        switchOverlay.classList.add("show");
-    }
+    if (animate) switchOverlay.classList.add("show");
  
-    // Actualizar clases del shell
     videoShell.classList.remove("youtube", "twitch");
     videoShell.classList.add(platform);
- 
-    // Actualizar marca de agua
     watermarkText.textContent = CONFIG[platform].label;
  
-    // Botones del selector
     document.querySelectorAll(".platform-btn").forEach(btn => {
-        const isActive = btn.dataset.platform === platform;
-        btn.classList.toggle("active", isActive);
-        btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+        const active = btn.dataset.platform === platform;
+        btn.classList.toggle("active", active);
+        btn.setAttribute("aria-pressed", active ? "true" : "false");
     });
  
-    // Construir URL del iframe
-    const url = platform === "youtube" ? buildYouTubeUrl() : buildTwitchUrl();
+    const url   = platform === "youtube" ? buildYouTubeUrl() : buildTwitchUrl();
+    const delay = animate ? 480 : 0;
  
-    // Pequeño delay para que el overlay sea visible y el iframe no rompa la animación
-    const delay = animate ? 500 : 0;
     setTimeout(() => {
         videoInner.innerHTML = `<iframe
             src="${url}"
@@ -86,12 +115,10 @@ function loadPlatform(platform, animate = false) {
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen>
         </iframe>`;
- 
-        setTimeout(() => switchOverlay.classList.remove("show"), 600);
+        setTimeout(() => switchOverlay.classList.remove("show"), 550);
     }, delay);
 }
  
-// Clicks en los botones de plataforma
 document.querySelectorAll(".platform-btn").forEach(btn => {
     btn.addEventListener("click", () => {
         if (btn.dataset.platform !== currentPlatform) {
@@ -100,13 +127,12 @@ document.querySelectorAll(".platform-btn").forEach(btn => {
     });
 });
  
-// Cargar plataforma inicial
 loadPlatform(currentPlatform, false);
  
  
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 //  TABS
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 document.querySelectorAll(".tab-btn").forEach(btn => {
     btn.addEventListener("click", () => {
         const target = btn.dataset.tab;
@@ -121,9 +147,9 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
 });
  
  
-// ══════════════════════════════════════════════════════
-//  ESTADÍSTICAS Y MINI-CHART
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
+//  MINI-CHART DE AUDIENCIA
+// ═══════════════════════════════════════════
 const chartHistory = [];
 const MAX_HIST     = 20;
 let   peakToday    = 0;
@@ -140,7 +166,7 @@ function resizeChart() {
     const canvas = document.getElementById("mini-chart");
     if (!canvas || !chartCtx) return;
     canvas.width  = canvas.offsetWidth  || 300;
-    canvas.height = canvas.offsetHeight || 34;
+    canvas.height = canvas.offsetHeight || 32;
     drawChart();
 }
  
@@ -154,7 +180,7 @@ function drawChart() {
     const step = W / (MAX_HIST - 1);
  
     const grad = chartCtx.createLinearGradient(0, 0, 0, H);
-    grad.addColorStop(0, "rgba(0,240,255,0.22)");
+    grad.addColorStop(0, "rgba(0,240,255,0.2)");
     grad.addColorStop(1, "rgba(0,240,255,0)");
  
     chartCtx.beginPath();
@@ -193,15 +219,14 @@ function updateStats(n) {
     if (chartHistory.length > MAX_HIST) chartHistory.shift();
     drawChart();
  
-    const pct = Math.min((n / 50) * 100, 100);
     const bar = document.getElementById("bar-now");
-    if (bar) bar.style.width = pct + "%";
+    if (bar) bar.style.width = Math.min((n / 50) * 100, 100) + "%";
 }
  
  
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 //  WEBSOCKET — CONTADOR EN TIEMPO REAL
-// ══════════════════════════════════════════════════════
+// ═══════════════════════════════════════════
 const elCount   = document.getElementById("viewer-count");
 const elStatNow = document.getElementById("stat-now");
 const elBadge   = document.getElementById("viewer-badge");
@@ -268,7 +293,6 @@ function connect() {
 const elTotal = document.getElementById("stat-total");
 if (elTotal) elTotal.textContent = "1";
  
-// Reconectar si la pestaña vuelve a estar visible
 document.addEventListener("visibilitychange", () => {
     if (!document.hidden && (!ws || ws.readyState !== WebSocket.OPEN)) {
         clearTimeout(reconnTimer);
@@ -277,7 +301,6 @@ document.addEventListener("visibilitychange", () => {
     }
 });
  
-// ── INIT ──
 document.addEventListener("DOMContentLoaded", () => {
     initChart();
     connect();
