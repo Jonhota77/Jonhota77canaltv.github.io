@@ -5,9 +5,18 @@
 // ╔══════════════════════════════════════════╗
 // ║  CONFIGURACIÓN                           ║
 // ╚══════════════════════════════════════════╝
-const WS_URL = "ws://localhost:8765/ws";
-// Con ngrok:     "wss://tu-id.ngrok-free.app/ws"
-// Con IP pública: "ws://123.456.789.0:8765/ws"
+const CONFIG = {
+    wsUrl: "ws://localhost:8765/ws",   // o tu URL de ngrok
+
+    youtube: {
+        videoId: "SynewvEcpf8",        // ← ID de tu video de YouTube
+    },
+
+    twitch: {
+        channel: "TU_CANAL_TWITCH",    // ← tu nombre en twitch.tv/TU_CANAL
+        parent:  "tu-usuario.github.io", // ← tu usuario real de GitHub Pages
+    },
+};
  
  
 // ═══════════════════════════════════════════
