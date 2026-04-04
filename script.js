@@ -14,7 +14,7 @@ const CONFIG = {
     // ── YouTube ──
     youtube: {
         // El ID del video/stream de YouTube (lo que va después de ?v= o /embed/)
-        videoId: "fO9e9jnhYK8?",
+        videoId: "0FBiyFpV__g?",
         label:   "▶ YouTube",
     },
  
