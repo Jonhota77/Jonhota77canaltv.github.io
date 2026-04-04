@@ -7,83 +7,130 @@
     <meta name="keywords" content="canal tv online, streaming, retrofuturo digital, televisión por internet">
     <meta name="author" content="Jonh Jota Soluciones">
     <title>Retrofuturo Digital | TV Online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+ 
+    <!-- Fondo animado -->
+    <div class="bg-grid"></div>
+    <div class="scanlines"></div>
+ 
     <header class="header">
         <nav class="navbar">
+            <div class="logo">
+                <span class="logo-icon">▶</span>
+                <span class="logo-text">RETROFUTURO<span class="logo-accent">DIGITAL</span></span>
+            </div>
             <ul class="menu">
                 <li><a href="#home">Inicio</a></li>
                 <li><a href="#live">En Vivo</a></li>
                 <li><a href="#contact">Contacto</a></li>
                 <li><a href="#donate" class="donate-btn">Donar</a></li>
             </ul>
+            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
         </nav>
     </header>
-
+ 
     <main>
-
+        <!-- HERO -->
         <section id="home" class="hero-section">
-            <h1>Bienvenido a Retrofuturo Digital</h1>
-            <p>
-                Escuchamos tus ideas para mejorar. 
-                Escríbenos por WhatsApp y construyamos algo increíble juntos.
-            </p>
-            <a href="#live" class="live-button">Ver Transmisión en Vivo</a>
-        </section>
-
-        <section id="live" class="live-section">
-            <h2>Transmisión en Vivo</h2>
-            <div class="video-container">
-                <iframe
-                    src="<iframe width="560" height="315" src="https://www.youtube.com/embed/SynewvEcpf8?si=fTMF-SXliBQfG0rp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>"
-                    title="Transmisión en vivo Retrofuturo Digital"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="pulse-dot"></span> SEÑAL EN VIVO
+                </div>
+                <h1>Bienvenido a<br><span class="hero-highlight">Retrofuturo Digital</span></h1>
+                <p class="hero-sub">
+                    Escuchamos tus ideas para mejorar.<br>
+                    Escríbenos por WhatsApp y construyamos algo increíble juntos.
+                </p>
+                <div class="hero-actions">
+                    <a href="#live" class="live-button">
+                        <span class="btn-icon">▶</span> Ver Transmisión en Vivo
+                    </a>
+                    <a href="#contact" class="secondary-button">Contáctanos</a>
+                </div>
+            </div>
+            <div class="hero-decoration">
+                <div class="circle-outer"></div>
+                <div class="circle-mid"></div>
+                <div class="circle-inner"></div>
             </div>
         </section>
-
+ 
+        <!-- LIVE -->
+        <section id="live" class="live-section">
+            <div class="section-header">
+                <h2><span class="section-num">01</span> Transmisión en Vivo</h2>
+                <div class="live-indicator">
+                    <span class="pulse-dot"></span> EN VIVO AHORA
+                </div>
+            </div>
+            <div class="video-wrapper">
+                <div class="video-frame-deco"></div>
+                <div class="video-container">
+                    <iframe
+                        src="https://www.youtube.com/embed/SynewvEcpf8?si=fTMF-SXliBQfG0rp"
+                        title="Transmisión en vivo Retrofuturo Digital"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- DONATE -->
         <section id="donate" class="donate-section">
-            <h2>Apoya Nuestro Proyecto</h2>
-            <p>
-                Con tu ayuda seguimos creando contenido único y de calidad.
+            <div class="section-header">
+                <h2><span class="section-num">02</span> Apoya Nuestro Proyecto</h2>
+            </div>
+            <p class="section-desc">
+                Con tu ayuda seguimos creando contenido único y de calidad.<br>
                 ¡Gracias por apoyar este sueño!
             </p>
-
             <div class="donate-buttons">
-                <a href="https://www.paypal.me/JonhSuazaramirez" 
-                   target="_blank" 
+                <a href="https://www.paypal.me/JonhSuazaramirez"
+                   target="_blank"
+                   rel="noopener noreferrer"
                    class="paypal-button">
-                   Donar por PayPal
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.26-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.477z"/></svg>
+                    Donar por PayPal
                 </a>
             </div>
         </section>
-
+ 
+        <!-- CONTACT -->
         <section id="contact" class="contact-section">
-            <h2>Contáctanos</h2>
-            <p>Escríbenos por WhatsApp y redes sociales:</p>
-
+            <div class="section-header">
+                <h2><span class="section-num">03</span> Contáctanos</h2>
+            </div>
+            <p class="section-desc">Escríbenos por WhatsApp y redes sociales:</p>
             <div class="contact-buttons">
-                <a href="https://wa.link/nntcm4" 
-                   target="_blank" 
+                <a href="https://wa.link/nntcm4"
+                   target="_blank"
+                   rel="noopener noreferrer"
                    class="whatsapp-button">
-                   WhatsApp
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                    WhatsApp
                 </a>
             </div>
         </section>
-
     </main>
-
-    <footer>
-        <p>&copy; 2026 Retrofuturo Digital. Todos los derechos reservados.</p>
+ 
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <span class="logo-icon">▶</span> RETROFUTURO DIGITAL
+            </div>
+            <p>&copy; 2026 Retrofuturo Digital. Todos los derechos reservados.</p>
+            <p class="footer-credit">Desarrollado por <strong>Jonh Jota Soluciones</strong></p>
+        </div>
     </footer>
-
-    <script src="script.js"></script>
-</body>
-</html>
-
+ 
     <script src="script.js"></script>
 </body>
 </html>
