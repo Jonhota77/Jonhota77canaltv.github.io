@@ -38,7 +38,7 @@ TELEGRAM_BOT_TOKEN = "8332034686:AAEtCtmyvzDEkmnYjAtq6>"          # Ej: 74123456
 TELEGRAM_CHAT_ID   = "842971562"        # Ej: 123456789
  
 # Umbrales de alerta: te avisa cuando superas o bajas de estos números
-ALERTAS = [5, 10, 25, 50, 100, 200, 500]
+ALERTAS = [1, 3, 5, 10, 20, 100, 500]
  
 # Tiempo mínimo entre alertas del mismo tipo (segundos)
 COOLDOWN_SEG = 120
