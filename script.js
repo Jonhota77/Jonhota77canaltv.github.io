@@ -16,7 +16,7 @@ const CONFIG = {
         // ► CAMBIA ESTE ID para apuntar a otro video/stream de YouTube
         // Es la parte después de ?v= o /embed/ en la URL
         // Ej: youtube.com/watch?v=  ABC123   ← ese es el ID
-        videoId: "SynewvEcpf8",
+        videoId: "pb479u7ftBI?",
         label:   "▶ YouTube",
     },
  
