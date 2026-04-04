@@ -34,8 +34,8 @@ from fastapi.middleware.cors import CORSMiddleware
 # ══════════════════════════════════════
 #  CONFIGURACIÓN — EDITA AQUÍ
 # ══════════════════════════════════════
-TELEGRAM_BOT_TOKEN = "PEGA_AQUÍ_TU_TOKEN"          # Ej: 7412345678:AAFxxx...
-TELEGRAM_CHAT_ID   = "PEGA_AQUÍ_TU_CHAT_ID"        # Ej: 123456789
+TELEGRAM_BOT_TOKEN = "8332034686:AAEtCtmyvzDEkmnYjAtq6>"          # Ej: 7412345678:AAFxxx...
+TELEGRAM_CHAT_ID   = "842971562"        # Ej: 123456789
  
 # Umbrales de alerta: te avisa cuando superas o bajas de estos números
 ALERTAS = [5, 10, 25, 50, 100, 200, 500]
