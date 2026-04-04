@@ -2,10 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Retrofuturo Digital - Canal de televisión online con estilo retrofuturista y tecnología avanzada.">
-    <meta name="keywords" content="canal tv online, streaming, retrofuturo digital, televisión por internet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Retrofuturo Digital - Canal de televisión online.">
     <meta name="author" content="Jonh Jota Soluciones">
+    <meta name="theme-color" content="#04050f">
     <title>Retrofuturo Digital | TV Online</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,65 +14,46 @@
 </head>
 <body>
  
-    <!-- Fondo animado -->
-    <div class="bg-grid"></div>
-    <div class="scanlines"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
  
-    <header class="header">
-        <nav class="navbar">
-            <div class="logo">
-                <span class="logo-icon">▶</span>
-                <span class="logo-text">RETROFUTURO<span class="logo-accent">DIGITAL</span></span>
+    <!-- ══ APP SHELL ══════════════════════════════════════════ -->
+    <div class="app">
+ 
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <span class="logo-play">▶</span>
+                <span class="logo-text">RETROFUTURO<em>DIGITAL</em></span>
             </div>
-            <ul class="menu">
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#live">En Vivo</a></li>
-                <li><a href="#contact">Contacto</a></li>
-                <li><a href="#donate" class="donate-btn">Donar</a></li>
-            </ul>
-            <button class="menu-toggle" aria-label="Abrir menú">☰</button>
-        </nav>
-    </header>
- 
-    <main>
-        <!-- HERO -->
-        <section id="home" class="hero-section">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="pulse-dot"></span> SEÑAL EN VIVO
-                </div>
-                <h1>Bienvenido a<br><span class="hero-highlight">Retrofuturo Digital</span></h1>
-                <p class="hero-sub">
-                    Escuchamos tus ideas para mejorar.<br>
-                    Escríbenos por WhatsApp y construyamos algo increíble juntos.
-                </p>
-                <div class="hero-actions">
-                    <a href="#live" class="live-button">
-                        <span class="btn-icon">▶</span> Ver Transmisión en Vivo
-                    </a>
-                    <a href="#contact" class="secondary-button">Contáctanos</a>
+            <div class="topbar-center">
+                <div class="live-pill">
+                    <span class="live-dot"></span>
+                    <span>EN VIVO</span>
                 </div>
             </div>
-            <div class="hero-decoration">
-                <div class="circle-outer"></div>
-                <div class="circle-mid"></div>
-                <div class="circle-inner"></div>
-            </div>
-        </section>
- 
-        <!-- LIVE -->
-        <section id="live" class="live-section">
-            <div class="section-header">
-                <h2><span class="section-num">01</span> Transmisión en Vivo</h2>
-                <div class="live-indicator">
-                    <span class="pulse-dot"></span> EN VIVO AHORA
+            <div class="topbar-right">
+                <div class="viewer-badge" id="viewer-badge">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                    </svg>
+                    <span id="viewer-count">--</span>
+                    <span class="viewer-sep">|</span>
+                    <span id="conn-dot" class="conn-dot"></span>
                 </div>
             </div>
-            <div class="video-wrapper">
-                <div class="video-frame-deco"></div>
-                <div class="video-container">
+        </header>
+ 
+        <!-- VIDEO PRINCIPAL -->
+        <main class="stage">
+            <div class="video-shell">
+                <div class="corner tl"></div>
+                <div class="corner tr"></div>
+                <div class="corner bl"></div>
+                <div class="corner br"></div>
+                <div class="video-inner">
                     <iframe
-                        src="https://www.youtube.com/embed/_BDoxpwdHTY?si=DfKLHW2LiUdnH5Bi"
+                        src="https://www.youtube.com/embed/SynewvEcpf8?si=fTMF-SXliBQfG0rp"
                         title="Transmisión en vivo Retrofuturo Digital"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -81,55 +62,97 @@
                     </iframe>
                 </div>
             </div>
+        </main>
+ 
+        <!-- TABS NAV -->
+        <nav class="tab-nav" role="tablist" aria-label="Secciones del canal">
+            <button class="tab-btn active" data-tab="counter" role="tab" aria-selected="true" aria-controls="tab-counter">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                <span>Audiencia</span>
+            </button>
+            <button class="tab-btn" data-tab="donate" role="tab" aria-selected="false" aria-controls="tab-donate">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+                <span>Donar</span>
+            </button>
+            <button class="tab-btn" data-tab="contact" role="tab" aria-selected="false" aria-controls="tab-contact">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                <span>Contacto</span>
+            </button>
+            <button class="tab-btn" data-tab="about" role="tab" aria-selected="false" aria-controls="tab-about">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+                <span>Acerca</span>
+            </button>
+        </nav>
+ 
+        <!-- PANELS -->
+        <section class="tab-panels">
+ 
+            <!-- AUDIENCIA -->
+            <div class="tab-panel active" id="tab-counter" role="tabpanel">
+                <div class="audience-grid">
+                    <div class="stat-card main-stat">
+                        <div class="main-stat-number" id="stat-now">--</div>
+                        <div class="main-stat-label">personas viendo ahora</div>
+                        <div class="stat-track"><div class="stat-fill" id="bar-now" style="width:0%"></div></div>
+                    </div>
+                    <div class="stat-card mini-stat">
+                        <div class="mini-stat-number" id="stat-peak">--</div>
+                        <div class="mini-stat-label">Pico hoy</div>
+                    </div>
+                    <div class="stat-card mini-stat">
+                        <div class="mini-stat-number" id="stat-total">0</div>
+                        <div class="mini-stat-label">Visitas sesión</div>
+                    </div>
+                </div>
+                <div class="chart-wrap">
+                    <div class="chart-label">Últimos 20 registros</div>
+                    <canvas id="mini-chart"></canvas>
+                </div>
+            </div>
+ 
+            <!-- DONAR -->
+            <div class="tab-panel" id="tab-donate" role="tabpanel">
+                <div class="panel-body">
+                    <div class="panel-emoji">💛</div>
+                    <h2 class="panel-title">Apoya el Canal</h2>
+                    <p class="panel-desc">Con tu apoyo seguimos creando contenido único y de calidad.<br>¡Gracias por creer en este sueño!</p>
+                    <a href="https://www.paypal.me/JonhSuazaramirez"
+                       target="_blank" rel="noopener noreferrer"
+                       class="action-btn paypal-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.26-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.477z"/></svg>
+                        Donar por PayPal
+                    </a>
+                </div>
+            </div>
+ 
+            <!-- CONTACTO -->
+            <div class="tab-panel" id="tab-contact" role="tabpanel">
+                <div class="panel-body">
+                    <div class="panel-emoji">📲</div>
+                    <h2 class="panel-title">Contáctanos</h2>
+                    <p class="panel-desc">Escríbenos con ideas, sugerencias o simplemente a saludar.<br>¡Construyamos juntos algo increíble!</p>
+                    <a href="https://wa.link/nntcm4"
+                       target="_blank" rel="noopener noreferrer"
+                       class="action-btn whatsapp-btn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                        Escribir por WhatsApp
+                    </a>
+                </div>
+            </div>
+ 
+            <!-- ACERCA -->
+            <div class="tab-panel" id="tab-about" role="tabpanel">
+                <div class="panel-body">
+                    <div class="panel-emoji">📡</div>
+                    <h2 class="panel-title">Retrofuturo Digital</h2>
+                    <p class="panel-desc">Canal de televisión online con estilo retrofuturista y tecnología avanzada. Transmitimos contenido único desde Colombia para el mundo.</p>
+                    <p class="panel-credit">Desarrollado por <strong>Jonh Jota Soluciones</strong><br>Ipiales, Nariño · 2026</p>
+                </div>
+            </div>
+ 
         </section>
  
-        <!-- DONATE -->
-        <section id="donate" class="donate-section">
-            <div class="section-header">
-                <h2><span class="section-num">02</span> Apoya Nuestro Proyecto</h2>
-            </div>
-            <p class="section-desc">
-                Con tu ayuda seguimos creando contenido único y de calidad.<br>
-                ¡Gracias por apoyar este sueño!
-            </p>
-            <div class="donate-buttons">
-                <a href="https://www.paypal.me/JonhSuazaramirez"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="paypal-button">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.26-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .923-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.777-4.477z"/></svg>
-                    Donar por PayPal
-                </a>
-            </div>
-        </section>
- 
-        <!-- CONTACT -->
-        <section id="contact" class="contact-section">
-            <div class="section-header">
-                <h2><span class="section-num">03</span> Contáctanos</h2>
-            </div>
-            <p class="section-desc">Escríbenos por WhatsApp y redes sociales:</p>
-            <div class="contact-buttons">
-                <a href="https://wa.link/nntcm4"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="whatsapp-button">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-                    WhatsApp
-                </a>
-            </div>
-        </section>
-    </main>
- 
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-logo">
-                <span class="logo-icon">▶</span> RETROFUTURO DIGITAL
-            </div>
-            <p>&copy; 2026 Retrofuturo Digital. Todos los derechos reservados.</p>
-            <p class="footer-credit">Desarrollado por <strong>Jonh Jota Soluciones</strong></p>
-        </div>
-    </footer>
+    </div><!-- /app -->
  
     <script src="script.js"></script>
 </body>
